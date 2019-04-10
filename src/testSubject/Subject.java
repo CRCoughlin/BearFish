@@ -23,13 +23,13 @@ abstract class Subject{
 	public Subject(int maxS, int minS){
 		Random rand = new Random();
 		strength = rand.nextInt(maxS) + minS;
-		gender = (rand.nextInt() > 0)? true : false;
+		gender = (rand.nextInt() > 0);
 	}
 
-	public Subject(int id){
+	public Subject(){
 		Random rand = new Random();
 		strength = rand.nextInt(100) + 0;
-		gender = (rand.nextInt() > 0)? true : false;
+		gender = (rand.nextInt() > 0);
 	}
 	
 	public int getStrength() { return strength; }
@@ -49,6 +49,7 @@ abstract class Subject{
             setY(y);
         }
                 
+        @Override
 	public String toString() {
 		return "Subject{'Strength': " + strength + ", 'Gender': " + gender + "}\n";
 	}

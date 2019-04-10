@@ -26,14 +26,15 @@ public class BearFish {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Room board = new Room();
 		getInput_AutoRandom();
 		createSubjects();
 		System.out.println("\nSubjects:\n" + subjects.toString());
 		
+                Room board = new Room(size, condition, subjects);
+                
 	}
 	
-	private static boolean getInput_AutoRandom() {
+	private static void getInput_AutoRandom() {
 		Scanner myObj = new Scanner(System.in);
 		System.out.println("Enter board size: ");
 		size = myObj.nextInt();
@@ -49,7 +50,6 @@ public class BearFish {
 		numSubjects = 2;
 		subjectType = new String[] {"Bear", "Fish"};
 		placement = "Random";
-		return true;
 	}
 	
 	private static void createSubjects() {

@@ -9,8 +9,6 @@ package facility;
  */
 public interface Phases {
 
-		int turn = 2;
-	
 		void nextTurn();
 		
 		void reset();

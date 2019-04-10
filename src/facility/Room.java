@@ -3,6 +3,7 @@
  */
 package facility;
 
+import java.util.Random;
 import testSubject.TestSubject;
 
 /**
@@ -14,18 +15,20 @@ public class Room{
 	private int[][] board;
 	private Conditioner condition;
         private TestSubject subjects;
-        private int size = 0;           // As square
+        private int length = 0;           // As square
+        private int area = 0;
 	
-	public Room (int size, String type) {
-		condition = new Conditioner(type);
+	public Room (int size, String condType) {
+		condition = new Conditioner(condType);
 		board = new int[size][size];
-                this.size = size*size;
+                area = size*size;
+                length = size;
 	}
         
-        public Room (int size, String type, TestSubject subjects) {
-		condition = new Conditioner(type);
+        public Room (int size, String condType, TestSubject subjects) {
+		condition = new Conditioner(condType);
 		board = new int[size][size];
-                this.size = size*size;
+                area = size*size;
                 this.subjects = subjects;
 	}
         
@@ -39,8 +42,20 @@ public class Room{
         }
         
         private void randomPlacement(){
-            Collention[] d = {2,3,4,};
-            d.s
+            int id = 0;
+            int amount = subjects.subjects();
+            for(int i=0; i < size && id < amount; i++)
+                for(int j=0; j < size && id < amount; j++)
+                    board[i][j] = id++;
+                
+int temp;
+            for(int i=0; i < Math.floor(amount/length); i++)
+for( j=amount%length; j > -1; j--){
+x = Rand.nextInt() * length
+
+temp = board[IMath....][x%length];
+board[I][j] = x;
+
         }
 	
 	public void setSubjects(TestSubject subjects) {
@@ -49,7 +64,7 @@ public class Room{
 	
 	public void setSize(int size) {
 		board = new int[size][size];
-                this.size = size*size;
+                area = size*size;
 	}
 	
 	public void setCondition(String type) {
@@ -66,14 +81,14 @@ public class Room{
         
         public String toASCIIBoard(){
             String str = new String();
-            for(int i=0; i < size; i++){
-                for(int j=0; j < size; j++){  // Set for squares only
+            for(int i=0; i < length; i++){
+                for(int j=0; j < length; j++){  // Set for squares only
                     str += subjects.getSubject([board[i][j]]).getClass()[0];
-                   if(j < size-1)
+                   if(j < length-1)
                        str += '|';
                 }
                 if(i < size-1)
-                       for(int j=0; j<size; j++)
+                       for(int j=0; j<length; j++)
                            str += '-';
             }
             return str;

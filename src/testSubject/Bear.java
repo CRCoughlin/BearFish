@@ -9,6 +9,14 @@ package testSubject;
  */
 public class Bear extends Subject implements Actions<Bear>{
 
+    public Bear() {
+        super();
+    }
+    
+    public Bear(int min, int max) {
+        super(min, max);
+    }
+
 	/* (non-Javadoc)
 	 * @see testSubject.Actions#killed(int)
 	 */

@@ -9,14 +9,20 @@ package testSubject;
  */
 public class Fish extends Subject implements Actions<Fish>{
 
+    public Fish() {
+        super();
+    }
+    
+    public Fish(int min, int max) {
+        super(min, max);
+    }
+
 	/* (non-Javadoc)
 	 * @see testSubject.Actions#killed(int)
 	 */
 	@Override
 	public boolean killed(int strength) {
-		if (strength > this.strength)
-			return true;
-		return false;
+		return strength > this.strength;
 	}
 
 	/* (non-Javadoc)

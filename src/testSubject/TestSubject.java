@@ -3,7 +3,6 @@
  */
 package testSubject;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
@@ -14,18 +13,17 @@ import java.util.stream.IntStream;
  */
 public class TestSubject {
 	
-	private final String[] types = new String[]{"Bear", "Fish"};
+	final String[] TYPES = new String[]{"Bear", "Fish"};
+        private final String CLASSPATH = "testSubject.";
 	
-	private Object[] subjects;
-	int len = 0;
+	private final Object[] SUBJECTS;
+	int length = 0;
 
 	public TestSubject(int[] amount, String[] type){
-            //subjects = new Object[IntStream.of(amount).sum()];
+            SUBJECTS = new Object[IntStream.of(amount).sum()];
 
             for(int i=0; i < type.length; i ++){
-                    if(Arrays.stream(types).anyMatch(type[i]::equals)) {	// Throw exception if not a valid class
-                            //subjects[i] = new Object[amount[i]];
-                            //subjects = 
+                    if(Arrays.stream(TYPES).anyMatch(type[i]::equals)) {	// Throw exception if not a valid class
                         subjectFactory(amount[i], type[i]);
                     }
             }
@@ -33,32 +31,32 @@ public class TestSubject {
 
 	@SuppressWarnings("unchecked")
 	private void subjectFactory(int amount, String type){
-		String clazz = "testSubject."+type;
+		String clazz = CLASSPATH + type;
 		try {	
-			if(Arrays.stream(types).anyMatch(type::equals)) {
-				//T[] subject = (T[]) Array.newInstance(Class.forName(clazz), amount);
+			if(Arrays.stream(TYPES).anyMatch(type::equals)) {
 				for(int i=0; i < amount; i ++) {
 					Object obj = Class.forName(clazz).newInstance();
                                         //Object obj = Class.forName(clazz).getDeclaredConstructors()[2].newInstance(len++);  //TODO: !Inspect of gDC()
-					subjects[i] = obj;
+					SUBJECTS[length++] = obj;
 				}
 			}		
 		} catch (InstantiationException | IllegalAccessException e) {
 			System.out.print("ERROR: Bad access!\n");
-			e.printStackTrace();
 			
 		} catch (ClassNotFoundException e) {	
 			System.out.print("ERROR: Invalid subject type! Only 'Bear', 'Fish' are allowed.\n");
-			e.printStackTrace();
 		}
 	}	
 	
-        public Object getSubject(int id){ return subjects[id]; }
+        public Object getSubject(int id){ return SUBJECTS[id]; }
         
+        public int subjects(){return length;}
+        
+        @Override
 	public String toString() {
 		String str = new String();
-		for(int i=0; i < subjects.length; i++)
-                    str += subjects[i].toString();
+		for(int i=0; i < length; i++)
+                    str += SUBJECTS[i].toString();
 		return str;
 	}
 	
