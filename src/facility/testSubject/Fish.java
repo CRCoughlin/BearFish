@@ -1,7 +1,7 @@
 /**
  * 
  */
-package testSubject;
+package facility.testSubject;
 
 /**
  * @author Christian Coughlin
@@ -15,6 +15,7 @@ public class Fish extends Subject implements Actions<Fish>{
     
     public Fish(int min, int max) {
         super(min, max);
+        super.speed = 1;
     }
 
 	/* (non-Javadoc)

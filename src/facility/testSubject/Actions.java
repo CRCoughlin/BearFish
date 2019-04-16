@@ -1,7 +1,7 @@
 /**
  * 
  */
-package testSubject;
+package facility.testSubject;
 
 /**
  * @author Christian Coughlin

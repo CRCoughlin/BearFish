@@ -1,5 +1,7 @@
+package bearfish;
+
 import facility.Room;
-import testSubject.TestSubject;
+import facility.testSubject.TestSubject;
 import java.util.Scanner;
 
 /**
@@ -13,7 +15,7 @@ import java.util.Scanner;
 public class BearFish {
 	
 	static int size;
-	static String condition = "Random";
+	static String condition = "RandomMovement";
 	static int numSubjects;
 	static String[] subjectType;
 	static String subject1 = "Bear";
@@ -30,7 +32,9 @@ public class BearFish {
 		createSubjects();
 		System.out.println("\nSubjects:\n" + subjects.toString());
 		
-                Room board = new Room(size, condition, subjects);
+                Room board = new Room(size, condition, subjects, null);
+                
+                board.displayGrid();
                 
 	}
 	
@@ -40,20 +44,20 @@ public class BearFish {
 		size = myObj.nextInt();
 		
 		System.out.println("Auto select: \n"
-				+ "Condition - Random\n"
+				+ "Condition - RandomMovement\n"
 				+ "Subjects - 2\n"
 				+ "Subject 1 - Bear\n"
 				+ "Subject 2 - Fish\n"
 				+ "Placement - Random");
 		
-		condition = "Random";
+		condition = "RandomMovement";
 		numSubjects = 2;
 		subjectType = new String[] {"Bear", "Fish"};
 		placement = "Random";
 	}
 	
 	private static void createSubjects() {
-		int[] amounts = new int[] {size/4, size/4};				//TODO: Temp fix for object amounts till GUI input
+		int[] amounts = new int[] {size*size/8, size*size/8};				//TODO: Temp fix for object amounts till GUI input
 		
 		subjects = new TestSubject(amounts, subjectType);
 	}

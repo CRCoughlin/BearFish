@@ -1,7 +1,7 @@
 /**
  * 
  */
-package testSubject;
+package facility.testSubject;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
 public class TestSubject {
 	
 	final String[] TYPES = new String[]{"Bear", "Fish"};
-        private final String CLASSPATH = "testSubject.";
+        private final String CLASSPATH = "facility.testSubject.";
 	
 	private final Object[] SUBJECTS;
 	int length = 0;
@@ -48,8 +48,36 @@ public class TestSubject {
 		}
 	}	
 	
-        public Object getSubject(int id){ return SUBJECTS[id]; }
+        //~ make return as HashMap
+        public String[] subjectInfo(int ID){
+            Subject sub = (Subject)SUBJECTS[ID];
+            String cName = sub.getClass().getName();
+            String[] info = {cName, Boolean.toString(sub.gender),Integer.toString(sub.strength), Integer.toString(sub.speed), Integer.toString(sub.x), Integer.toString(sub.y)};
+            return info;
+        }
         
+        public Subject getSubject(int id){ return (Subject)SUBJECTS[id]; }
+        // TODO make Object[]  to subject at Constructor and on
+        
+        public boolean setCord(int id, int x, int y){
+            try{
+                ((Subject)SUBJECTS[id]).setCord(x, y);
+            } catch (IndexOutOfBoundsException e){
+                System.out.print("ERROR: Index ID not in range!\n");
+                return false;
+            } 
+            return true;
+        }
+        
+        public String identify(int index){
+            try{
+                return SUBJECTS[index].getClass().getName();
+            } catch (IndexOutOfBoundsException e){
+                System.out.print("ERROR: Index ID not in range!\n");
+                return null;
+            } 
+        }
+       
         public int subjects(){return length;}
         
         @Override

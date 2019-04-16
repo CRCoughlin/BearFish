@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package testSubject;
+package facility.testSubject;
 
 /**
  *
@@ -13,9 +13,11 @@ package testSubject;
 
 import java.util.Random;
 
-abstract class Subject{
+public abstract class Subject{
 	final int strength;
 	final boolean gender;	// false: female, true: male
+        boolean alive = true;
+        int speed;
         int x = 0;
         int y = 0;
         
@@ -31,6 +33,20 @@ abstract class Subject{
 		strength = rand.nextInt(100) + 0;
 		gender = (rand.nextInt() > 0);
 	}
+        
+        public boolean isAlive(){
+            return alive;
+        }
+        
+        public void dead(){
+            alive = false;
+        }
+        
+        public void alive(){
+            alive = true;
+        }
+        
+        public int getSpeed() {return speed; }
 	
 	public int getStrength() { return strength; }
 
@@ -48,7 +64,13 @@ abstract class Subject{
             setX(x);
             setY(y);
         }
+        
+        public int[] getCord(){
+            return new int[] {x, y};
+        }
                 
+
+        
         @Override
 	public String toString() {
 		return "Subject{'Strength': " + strength + ", 'Gender': " + gender + "}\n";
