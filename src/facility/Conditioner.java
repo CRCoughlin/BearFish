@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import facility.testSubject.Actions;
 import facility.testSubject.TestSubject;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Christian R. Coughlin Mar 24, 2019
@@ -34,10 +35,13 @@ public class Conditioner {
         }
     }
 
-    public void turn(int turns, Grid grid) {
-        for (int i = 0; i < turns; i++)
+    public void turn(int turns, Grid grid, int speed) throws InterruptedException {
+        for (int i = 0; i < turns; i++){
             condition.nextTurn(grid);
-        
+            if(speed > 0)
+                System.out.println("\nTurn: " + (i+1) + "\n" +grid.toText());
+                TimeUnit.SECONDS.sleep(speed);
+        }
     }
     
     public String[] getConditions() {

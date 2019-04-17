@@ -15,6 +15,9 @@ import java.util.Scanner;
 public class BearFish {
 	
 	static int size;
+        static int turns;
+        static int pop;
+        static int speed;
 	static String condition = "RandomMovement";
 	static int numSubjects;
 	static String[] subjectType;
@@ -34,14 +37,29 @@ public class BearFish {
 		
                 Room board = new Room(size, condition, subjects, null);
                 
+                System.out.println("Starting Board:");
                 board.displayGrid();
                 
+                board.runs(turns, speed);
+                
+                System.out.println("Result ~~~~~~~~~~\nTurns after: " + turns);
+                board.displayGrid();
+                System.out.println("Subjects:\n" + subjects.toString());
 	}
 	
 	private static void getInput_AutoRandom() {
-		Scanner myObj = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 		System.out.println("Enter board size: ");
-		size = myObj.nextInt();
+		size = input.nextInt();
+                
+                System.out.println("How many turns: ");
+		turns = input.nextInt();
+                
+                System.out.println("Population Percent(1-100): ");
+		pop = input.nextInt();
+                
+                System.out.println("Time between turns (0-..)seconds: ");
+		speed = input.nextInt();
 		
 		System.out.println("Auto select: \n"
 				+ "Condition - RandomMovement\n"
@@ -57,7 +75,11 @@ public class BearFish {
 	}
 	
 	private static void createSubjects() {
-		int[] amounts = new int[] {size*size/8, size*size/8};				//TODO: Temp fix for object amounts till GUI input
+                int amount = (int) Math.round(((pop / numSubjects)* 0.01 * (size * size)));
+                if (amount*2 > size*size)
+                    amount = size;
+                
+		int[] amounts = new int[] {amount, amount};				//TODO: Temp fix for object amounts till GUI input
 		
 		subjects = new TestSubject(amounts, subjectType);
 	}

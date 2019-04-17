@@ -4,6 +4,8 @@
 package facility;
 
 import facility.testSubject.TestSubject;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Christian R. Coughlin
@@ -20,8 +22,12 @@ public class Room {
     }
 
     
-    public void runs(int turns){
-        condition.turn(turns, grid);
+    public void runs(int turns, int speed){
+        try {
+            condition.turn(turns, grid, speed);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Room.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void displayGrid(){

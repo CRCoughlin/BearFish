@@ -17,21 +17,20 @@ public abstract class Subject{
 	final int strength;
 	final boolean gender;	// false: female, true: male
         boolean alive = true;
-        int speed;
         int x = 0;
         int y = 0;
         
 
 	public Subject(int maxS, int minS){
 		Random rand = new Random();
-		strength = rand.nextInt(maxS) + minS;
-		gender = (rand.nextInt() > 0);
+		strength = rand.nextInt(maxS+1) + minS;
+		gender = (rand.nextInt(2) == 0);
 	}
 
 	public Subject(){
 		Random rand = new Random();
-		strength = rand.nextInt(100) + 0;
-		gender = (rand.nextInt() > 0);
+		strength = rand.nextInt(101) + 0;
+		gender = (rand.nextInt(2) == 0);
 	}
         
         public boolean isAlive(){
@@ -46,8 +45,6 @@ public abstract class Subject{
             alive = true;
         }
         
-        public int getSpeed() {return speed; }
-	
 	public int getStrength() { return strength; }
 
 	public boolean getGender() { return gender; }

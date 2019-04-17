@@ -105,9 +105,10 @@ public class Grid {
         return testSubjects.getSubject(ID);
     }
     
+    /*
     public String[] subjectInfo(int id){
         return testSubjects.subjectInfo(id);
-    }
+    }*/
     
     public int subjects(){
         return subjects;

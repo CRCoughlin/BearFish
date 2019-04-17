@@ -12,7 +12,7 @@ public interface Actions <T extends Actions<T>> {
 	
 	boolean killed(int strength);
 	
-	int move();
+	int moves();
 	
 	T reprocreate(Subject subject);
 }

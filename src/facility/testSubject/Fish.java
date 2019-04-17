@@ -15,7 +15,6 @@ public class Fish extends Subject implements Actions<Fish>{
     
     public Fish(int min, int max) {
         super(min, max);
-        super.speed = 1;
     }
 
 	/* (non-Javadoc)
@@ -30,7 +29,7 @@ public class Fish extends Subject implements Actions<Fish>{
 	 * @see testSubject.Actions#move()
 	 */
 	@Override
-	public int move() {
+	public int moves() {
 		// TODO Auto-generated method stub
 		return 1;
 	}
@@ -45,6 +44,6 @@ public class Fish extends Subject implements Actions<Fish>{
 	
 	@Override
 	public String toString() {
-		return "Fish{'Strength': " + strength + ", 'Gender': " + gender + "}\n";
+		return "Fish{'Alive': " + alive + ", 'Strength': " + strength + ", 'Gender': " + gender + "}\n";
 	}
 }

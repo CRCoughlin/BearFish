@@ -15,7 +15,6 @@ public class Bear extends Subject implements Actions<Bear>{
     
     public Bear(int min, int max) {
         super(min, max);
-        super.speed = 1;
     }
 
 	/* (non-Javadoc)
@@ -32,7 +31,7 @@ public class Bear extends Subject implements Actions<Bear>{
 	 * @see testSubject.Actions#move()
 	 */
 	@Override
-	public int move() {
+	public int moves() {
 		// TODO Auto-generated method stub
 		return 1;
 	}
@@ -47,7 +46,7 @@ public class Bear extends Subject implements Actions<Bear>{
 	
 	@Override
 	public String toString() {
-		return "Bear{'Strength': " + strength + ", 'Gender': " + gender + "}\n";
+		return "Bear{'Alive': " + alive + ", 'Strength': " + strength + ", 'Gender': " + gender + "}\n";
 	}
 
 }

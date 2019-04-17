@@ -47,14 +47,14 @@ public class TestSubject {
 			System.out.print("ERROR: Invalid subject type! Only 'Bear', 'Fish' are allowed.\n");
 		}
 	}	
-	
+	/*
         //~ make return as HashMap
         public String[] subjectInfo(int ID){
             Subject sub = (Subject)SUBJECTS[ID];
             String cName = sub.getClass().getName();
             String[] info = {cName, Boolean.toString(sub.gender),Integer.toString(sub.strength), Integer.toString(sub.speed), Integer.toString(sub.x), Integer.toString(sub.y)};
             return info;
-        }
+        }*/
         
         public Subject getSubject(int id){ return (Subject)SUBJECTS[id]; }
         // TODO make Object[]  to subject at Constructor and on
